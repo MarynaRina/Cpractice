@@ -1,0 +1,3 @@
+C:/Users/Maryna/CLionProjects/Polimorphysm/cmake-build-debug/CMakeFiles/Polimorphysm.dir
+C:/Users/Maryna/CLionProjects/Polimorphysm/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Maryna/CLionProjects/Polimorphysm/cmake-build-debug/CMakeFiles/rebuild_cache.dir
