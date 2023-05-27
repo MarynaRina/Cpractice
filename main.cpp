@@ -1,23 +1,21 @@
 #include <iostream>
 
 using namespace std;
-class Animal{
-
+int sum(int x, int y) {
+    return x+y;
 };
 
-class Cat : virtual public Animal{
-
+int mult(int x, int y) {
+    return x*y;
 };
-class Mouse : virtual public Animal{
-
-};
-
-class Cartoon : public Cat, public Mouse{
-
-};
-
-
 
 int main() {
+    int (*pF)(int, int) = sum;
+    int result = pF(4,2);
+    cout << result << endl;
+
+    pF = mult;
+    result = pF(4,3);
+    cout << result << endl;
 
 }
