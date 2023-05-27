@@ -1,5 +1,4 @@
 #include <iostream>
-#include <utility>
 
 using namespace std;
 
@@ -7,9 +6,9 @@ class Human {
 protected:
     string name;
 public:
-    Human(string n) : name(std::move(n)) {}
+    Human(string n) : name(n){}
 
-    void print() const {
+    virtual void print() const {
         cout << "I'm human" << endl;
         cout << "My name is: " << name << endl;
     }
@@ -21,7 +20,7 @@ private:
 public:
     Worker(string n, double s) : salary(s), Human(n) {}
 
-    void print() {
+    void print() const override {
         cout << "I'm worker" << endl;
         cout << "My name is: " << name << endl;
         cout << "My salary is: " << salary << endl;
@@ -29,14 +28,42 @@ public:
 };
 
 
+class Animal{
+public:
+    virtual void say() = 0;
+    virtual ~Animal(){
+        cout<<"~Animal"<<endl;
+    }
+};
+
+class Dog:public Animal{
+public:
+    void say()override {
+        cout<<"Woof"<<endl;
+    }
+
+    ~Dog(){
+        cout<<"~Dog"<<endl;
+    }
+};
+
+class Cat:public Animal{
+public:
+
+};
+
+void Say(Animal* animal){
+    animal->say();
+}
+
+
 int main() {
-    Worker worker("Alex", 500);
-    worker.print();
+    Animal* cat = new Cat();
+    Animal* dog = new Dog();
 
-    Human *pWorker = &worker;
-    pWorker->print(); // стрелочка потому что используем указатель
+    Say(cat);
+    Say(dog);
 
-    Human &rWorker = worker;
-    rWorker.print();
-    return 0;
+    delete cat;
+    delete dog;
 }
