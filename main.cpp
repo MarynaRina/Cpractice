@@ -1,21 +1,34 @@
 #include <iostream>
 
 using namespace std;
-int sum(int x, int y) {
-    return x+y;
+
+class Dollar{
+    //friend Dollar operator+(const Dollar& d1, const Dollar& d2);
+private:
+    int m_dollar;
+public:
+    Dollar(int dollar): m_dollar(dollar){}
+
+    int dollar() const{
+        return m_dollar;
+    }
+
+    Dollar operator+(const Dollar& other) const {
+        return Dollar(m_dollar+other.m_dollar);
+    }
 };
 
-int mult(int x, int y) {
-    return x*y;
-};
+//Dollar operator+(const Dollar& d1, const Dollar& d2){
+//    return Dollar(d1.dollar() + d2.dollar());
+//}
+
+//Dollar operator+(const Dollar& d1, const Dollar& d2){
+//    return Dollar(d1.m_dollar + d2.m_dollar);
+//}
 
 int main() {
-    int (*pF)(int, int) = sum;
-    int result = pF(4,2);
-    cout << result << endl;
-
-    pF = mult;
-    result = pF(4,3);
-    cout << result << endl;
-
+    Dollar d1(23);
+    Dollar d2(11);
+    Dollar d3 = d1 + d2;
+    cout << d3.dollar() << endl;
 }
