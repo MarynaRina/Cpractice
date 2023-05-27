@@ -1,5 +1,4 @@
 #include <iostream>
-#include <utility>
 
 using namespace std;
 
@@ -50,13 +49,7 @@ public:
 
 class Cat:public Animal{
 public:
-    void say() override {
-        cout<<"Meow"<<endl;
-    }
 
-    ~Cat(){
-        cout<<"~Cat"<<endl;
-    }
 };
 
 void Say(Animal* animal){
